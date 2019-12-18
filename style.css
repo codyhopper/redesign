@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 2em;
+  padding: .125em;
+}
+
+p {
+  font-family: Georgia, serif;
+  line-height: 1.5;
+  max-width: 33em;
+}
