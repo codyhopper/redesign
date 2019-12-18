@@ -2,10 +2,18 @@
   box-sizing: border-box;
 }
 
+html {
+  font-family: Georgia, serif;
+}
+
 
 body {
   margin: 2em;
   padding: .125em;
+}
+
+h1 {
+  font-family: Arial, sans-serif;
 }
 
 p {
