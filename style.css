@@ -112,6 +112,13 @@ small {
   margin: 6rem auto 2rem;
 }
 
+::selection {
+  background: #0000ff; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #0000ff; /* Gecko Browsers */
+}
+
 @-webkit-keyframes hover {
   0% {
     color: #2c2c2c;
