@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>From the Ground Up → Redesign Log</title>
+  <link rel="stylesheet" href="../../style.css">
+  <style>
+    a {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg">
+
+    <div class="center">
+
+      <!-- header -->
+      <br>
+      <h1><a href="https://codyhopper.github.io/redesign/">Redesign Log</a></h1>
+      <p><em>Documenting the process of redesigning my website</em></p>
+      <br>
+      <!-- post -->
+      <div class="post">
+        <h2>From the ground up</h2>
+        <p class="small">JANUARY 3 2020</p>
+        <p>After graduating last December, I knew it was time to transition my site from the academic to the professional. I wasn't sure of the best way to structure my site for any sort of user, much less a recruiter. <br>
+          <br>I began by cataloging unique site structures created by designers working in a wide variety of roles, from UX/UI to creative technologists. By the end of my research, I wanted to have an outline for a strong landing page, to decrease
+          the number of clicks, and to create a space for cohesion.<br>
+          <br>
+
+          Here are some of the hierarchies that fit my criteria:</p>
+        <div class="row">
+          <div class="column column-left">
+            <p>
+              <a href="https://tobiasahlin.com/" target="_blank">Tobias Ahlin</a>:<br>
+              {Intro}<br>
+              {Blog}<br>
+              {Projects}<br>
+              {Work}<br>
+              {Say hi}<br>
+              <br>
+              <a href="https://www.axmckinney.com/" target="_blank">Austin McKinney</a>:<br>
+              {Intro}<br>
+              {What I do}<br>
+              {Featured work}<br>
+              {Case Studies}<br>
+              {Get in touch}<br>
+              <br>
+              <a href="https://www.normadesign.it/" target="_blank">Norma</a>:<br>
+              {Info}<br>
+              {Log}<br>
+              {Projects}<br>
+              {Events}<br>
+              {Contact}
+            </p>
+          </div>
+          <div class="column column-right">
+            <p>
+              <a href="http://lorenzocadamuro.com/" target="_blank">Lorenzo Cadamuro</a>:<br>
+              {About}<br>
+              {Works}<br>
+              {Publications}<br>
+              {Get in touch}<br>
+              <br>
+              <a href="https://jonyablonski.com/" target="_blank">Jon Yablonski</a>:<br>
+              {Info}<br>
+              {Case studies}<br>
+              {Featured articles}<br>
+              <br>
+              <a href="https://frankchimero.com" target="_blank">Frank Chimero</a>:<br>
+              {About}<br>
+              {Writing highlights}<br>
+              {Blog posts}<br>
+              {Work highlights}<br>
+              {Elsewhere: socials}<br>
+            </p>
+          </div>
+        </div><br>
+
+        <p> In my research, I discovered excellent copywriting, intricate information architectures, and renewed confidence in my approach. After compiling some favorite examples, I took the same approach to my site, and this is what I first came up
+          with:</p><br>
+<div class="row">
+        <div class="column">
+          <p>
+            <a href="https://codyhopper.com" target="_blank">Cody Hopper</a>:<br>
+            {Intro}<br>
+            {Case Studies}<br>
+            {Projects}<br>
+            {Writings}<br>
+            {Contact}
+          </p>
+        </div>
+        </div><br>
+
+        <p>
+          I took this outline, sought out feedback, and dedicated more time to slimming down the content and re-writing the headlines to sound more approachable. The result was this:</p><br>
+
+          <div class="row">
+        <div class="card column">
+          <p>
+            <a href="https://codyhopper.com" target="_blank">Cody Hopper</a>:<br>
+            {Hello! My name's Cody.}<br>
+            {Latest projects}<br>
+            {Recent articles}<br>
+            {Let's get in touch.}
+          </p>
+</div>
+        </div><br>
+
+        <p> With this final site structure, I feel that I have achieved greater simplicity and cohesion. It was a huge improvement to the academic portfolio I graduated with, and one that I know can grow and change with my career.
+        </p>
+      </div>
+      <div class="footer">
+        <p>
+          Visit my <a style="text-decoration: underline" href="https://codyhopper.com">portfolio site</a>.<br>
+          © Cody Hopper 2020<br>
+        </p>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/jquery.js"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      var bg = document.querySelector('.bg');
+      document.body.appendChild(bg);
+
+      bg.addEventListener('mousemove', function(event) {
+
+        x = event.clientX;
+        y = event.clientY;
+
+        bg.style.backgroundColor = 'rgba( ' + x + ', 255, ' + y + ', .05)';
+      });
+    });
+  </script>
+
+</body>
+
+
+</html>

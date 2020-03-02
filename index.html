@@ -4,33 +4,69 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Redesign  →  Cody Hopper</title>
+  <title>Redesign → Cody Hopper</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="center">
-    <br>
-    <h1><a href="https://codyhopper.github.io/redesign/">Cody Hopper redesigns</a></h1>
-    <p><em>Documenting the process of redesigning my portfolio site</em></p>
-    <br>
-    <!-- <div class="break"></div> -->
-    <br>
-    <div class="post">
-      <h2><a href="https://codyhopper.github.io/redesign/posts/this-site">About this site</a></h2>
-      <p>December 17, 2019</p>
-    </div>
-    <br> <br>
-
-
-    <div class="footer">
-      <p>
-        Visit my <a style="text-decoration: underline" href="https://codyhopper.com">portfolio site</a>.<br>
-        © Cody Hopper 2020<br>
-      </p>
+  <div class="bg">
+    <div class="center">
+      <!-- header -->
       <br>
+      <h1><a href="https://codyhopper.github.io/redesign/">Redesign Log</a></h1>
+      <p><em>Documenting the process of redesigning my website</em></p><br>
+
+      <!-- post one -->
+      <div class="post">
+        <h2><a href="#">Click-to-copy</a></h2>
+        <p class="small"><em>Coming Soon</em></p>
+        <p>—</p>
+      </div>
+
+      <!-- post two -->
+      <div class="post">
+        <h2><a href="https://codyhopper.github.io/redesign/posts/from-the-ground">From the ground up</a></h2>
+        <p class="small">JANUARY 3 2020</p>
+        <p>Taking a closer look at hierarchy and information architecture</p>
+      </div>
+
+      <!-- post three -->
+      <div class="post">
+        <h2><a href="https://codyhopper.github.io/redesign/posts/this-site">About this site</a></h2>
+        <p class="small">DECEMBER 17 2019</p>
+        <p>A little background on why this series exists</p>
+      </div><br>
+      <br>
+
+
+      <div class="footer">
+        <p>
+          Visit my <a style="text-decoration: underline" href="https://codyhopper.com">portfolio site</a>.<br>
+          © Cody Hopper 2020<br>
+        </p>
+        <br>
+      </div>
     </div>
   </div>
+
+  <script src="posts/js/jquery.js"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      var bg = document.querySelector('.bg');
+      document.body.appendChild(bg);
+
+      bg.addEventListener('mousemove', function(event) {
+
+        x = event.clientX;
+        y = event.clientY;
+
+        bg.style.backgroundColor = 'rgba( ' + x + ', 255, ' + y + ', .05)';
+      });
+    });
+  </script>
+
 </body>
 
 

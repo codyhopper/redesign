@@ -4,28 +4,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About this site  →  Cody Hopper Redesigns</title>
+  <title>About this site → Cody Hopper Redesigns</title>
   <link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-  <div class="center">
-    <br>
-    <h1><a href="https://codyhopper.github.io/redesign/">Cody Hopper redesigns</a></h1>
-    <p><em>Documenting the process of redesigning my portfolio site</em></p>
-    <br>
-    <br>
-    <div class="post">
+  <div class="bg">
+    <div class="center">
       <br>
-      <h2>About this site</h2>
-      <p><em><small>December 17, 2019<small></em></p>
-      <p>This site is a log of major design changes for my portfolio to track the evolution of my online presence. For now, my goal is to shift the focus of my portfolio site away from the “academic” and more into the “professional”.<br>
-        <br>
-        I'm extremely excited to be creating this record. In personal projects, it’s so easy to blow through revision after revision. I'm looking forward to slowing down my process and being more reflective and open in my design practice.<br>
-        <br>
-        The design of this website is kept to a minimum. With no JavaScript, plug-ins, or flexbox, it’s just a simple container for talking about what I’m working on. This site has some of the same visual language as my portfolio site, like the bold
-        sans serif and rules, but it’s also extremely light using only using webfonts, websafe colors, and less than 200 lines of CSS. The typography is all here:</p>
-      <pre><code>
+      <h1><a href="https://codyhopper.github.io/redesign/">Redesign Log</a></h1>
+      <p><em>Documenting the process of redesigning my website</em></p>
+      <br>
+      <div class="post">
+        <h2>About this site</h2>
+        <p class="small">December 17, 2019</p>
+        <p>This site is a log of major design changes for my portfolio to track the evolution of my online presence. For now, my goal is to shift the focus of my portfolio site away from the “academic” and more into the “professional”.<br>
+          <br>
+          I'm extremely excited to be creating this record. In personal projects, it’s so easy to blow through revision after revision. I'm looking forward to slowing down my process and being more reflective and open in my design practice.<br>
+          <br>
+          The design of this website is kept to a minimum. With no JavaScript, plug-ins, or flexbox, it’s just a simple container for talking about what I’m working on. This site has some of the same visual language as my portfolio site, like the
+          bold
+          sans serif and rules, but it’s also extremely light using only using webfonts, websafe colors, and less than 200 lines of CSS. The typography is all here:</p>
+        <pre><code>
       h1 {
         font-family: Helvetica, Arial, sans-serif;
         line-height: 50%;
@@ -48,16 +48,37 @@
       }
     </code></pre>
 
-      <p>That's it! Thanks for joining me on this new approach to my design process. <br>I'm looking forward to seeing where this goes.</p>
+        <p>That’s it! Thanks for joining me on this new approach to my design process. I'm looking forward to seeing where this goes.</p>
+      </div>
+      <div class="footer">
+        <p>
+          Visit my <a style="text-decoration: underline" href="https://codyhopper.com">portfolio site</a>.<br>
+          © Cody Hopper 2020<br>
+        </p>
+        <br>
+      </div>
     </div>
-    <div class="footer">
-      <p>
-        Visit my <a style="text-decoration: underline" href="https://codyhopper.com">portfolio site</a>.<br>
-        © Cody Hopper 2020<br>
-      </p>
-      <br>
-    </div>
+
   </div>
+
+  <script src="../js/jquery.js"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      var bg = document.querySelector('.bg');
+      document.body.appendChild(bg);
+
+      bg.addEventListener('mousemove', function(event) {
+
+        x = event.clientX;
+        y = event.clientY;
+
+        bg.style.backgroundColor = 'rgba( '+x+', 255, '+y+', .05)';
+      });
+    });
+  </script>
+
 </body>
 
 
