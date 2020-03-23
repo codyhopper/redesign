@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Click-to-copy → Redesign Log</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="mailto-style.css">
+  <style>
+    a {
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="bg">
+
+    <div class="center">
+
+      <!-- header -->
+      <br>
+      <h1><a href="https://codyhopper.github.io/redesign/">Redesign Log</a></h1>
+      <p><em>Documenting the process of redesigning my website</em></p>
+      <br>
+      <!-- post -->
+      <div class="post">
+        <h2>Click-to-copy</h2>
+        <p class="small">MARCH 23 2020</p>
+        <p>Hello! Let me tell you a story:</p>
+        <p>So, you’re hovering over an email link at the bottom of a web page, and you wonder: if I click on this, will it happen again? Will clicking this email launch that default mail app that I’ve never, ever used? Causing the computer fan to whirr into a frenzy and a million mail notifications to swarm your desktop? This problem has a name:
+          email-bombing. You can find the culprit in one line of code:</p>
+        <pre><code contenteditable>
+&lt;a href="mailto:example@email.com">example@email.com</a></code>
+      </pre>
+        <p>Now, there are arguments made in defense of “mailto” have some good points. On clicking a “mailto” link, you launch the native email client and auto-populate any part of a draft email. This includes adding the addressee email, CC’s and
+          BCC’s, and even a subject line. Some would say that this offers the best user experience. But that’s with the idea that most users rely on their native email client to manage their inboxes.</p>
+        <p>On desktop, native email clients hardly compete with the most common email client: Gmail. In February 2020, one out of every four emails were opened on Gmail. Compare this with one in ten opened in Apple Mail, with even less in
+          Outlook<sup><u><a href="http://emailclientmarketshare.com" target="_blank">1</a></u></sup>.</p>
+
+        <p>At one time, "mailto" might have been a powerful tool. Now there are better ways to build a robust user experience without launching an oft-obsolete email client. The best solution follows the KISS (Keep It Simple, Stupid) principle:
+          click-to-copy.</p>
+
+        <p>You can put in place a click-to-copy interaction with a few lines of Javascript and a little CSS to create a solution that is timely and responsive. Check out my documentation below:</p>
+
+
+<pre><code contenteditable>
+// First, add the class ".mailto-link" to all "mailto" links
+// This is needed to separate the disabling of the default action
+// and to copy the email to the clipboard
+
+$('a[href^=mailto]').addClass('mailto-link');
+
+var mailto = $('.mailto-link');
+var messageCopy = 'Click to copy email address.';
+var messageSuccess = 'Email copied to clipboard!';
+
+mailto.append('<span class="mailto-message"></span>');
+$('.mailto-message').append(messageCopy);
+</code></pre>
+<br>
+<pre><code contenteditable>
+// Next, disable the default launch of the native email client
+
+$('a[href^=mailto]').click(function() {
+		return false;
+})
+</code></pre>
+<br>
+<pre><code contenteditable>
+// Add an on click action to fetch href and remove "mailto"
+// Finally, store the email address in a new variable
+
+mailto.click(function() {
+	var href = $(this).attr('href');
+	var email = href.replace('mailto:', '');
+	copyToClipboard(email);
+	$('.mailto-message').empty().append(messageSuccess);
+	setTimeout(function() {
+		$('.mailto-message').empty().append(messageCopy);}, 2000);
+});
+
+});
+</code></pre>
+<br>
+<pre><code contenteditable>
+// When that's done, you'll want that email variable copied to the clipboard
+
+function copyToClipboard(text) {
+  var dummy = document.createElement("input");
+  document.body.appendChild(dummy);
+  dummy.setAttribute('value', text);
+  dummy.select();
+  document.execCommand('copy');
+  document.body.removeChild(dummy);
+}
+</script></code></pre>
+<p>And of course, our CSS. One note here: you will need to adjust the position of your message pop-up once you have this code running. This can be done by using 10% increments for “transform: translate()”.</p>
+<pre><code contenteditable>
+  .mailto-link {
+    position: relative;
+    padding: 8px 0;
+  }
+
+  .mailto-message {
+    top: 1px;
+    left: 50%;
+    margin-bottom: -5px;
+    transform: translate(60%, 20%);
+    position: absolute;
+    opacity: 0;
+    width: auto;
+    white-space: nowrap;
+    font-size: 14px;
+    background-color: #2c2c2c;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    padding: 2px 6px;
+    border-radius: 2px;
+    transition: 0.5s;
+  }
+
+  .mailto-message:after {
+    content: '';
+    opacity: 1;
+  }
+
+  .mailto-link:hover .mailto-message,
+  .mailto-link:focus .mailto-message,
+  .mailto-link:focus-within .mailto-message {
+    display: block;
+    opacity: 1;
+  }
+</script></code></pre>
+
+        <p>Here’s our result!</p>
+
+        <a href="mailto:hello@codyhopper.com" target="_blank" style="font-family: Helvetica, sans-serif; font-size: 20px; margin: .5em .5em 2em .5em; padding: .5em 11em .5em .5em; background: #ffff80"><u>
+          hello@codyhopper.com
+        </u></a>
+
+        <p>Finally, a solution that won’t stir your native email client from it’s slumber, and a user experience that keeps your focus on the page.</p>
+
+        <!-- Footer -->
+
+      </div>
+      <div class="footer">
+        <p>
+          Visit my <a style="text-decoration: underline" href="https://codyhopper.com">portfolio site</a>.<br>
+          © Cody Hopper 2020<br>
+        </p>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/jquery.js"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      var bg = document.querySelector('.bg');
+      document.body.appendChild(bg);
+
+      bg.addEventListener('mousemove', function(event) {
+
+        x = event.clientX;
+        y = event.clientY;
+
+        bg.style.backgroundColor = 'rgba( ' + y + ', 255, ' + x + ', .05)';
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      //
+      $('a[href^=mailto]').addClass('mailto-link');
+
+      var mailto = $('.mailto-link');
+      var messageCopy = 'Click to copy email address.';
+      var messageSuccess = 'Email copied to clipboard!';
+
+      mailto.append('<span class="mailto-message"></span>');
+      $('.mailto-message').append(messageCopy);
+      //
+      $('a[href^=mailto]').click(function() {
+        return false;
+      })
+      //
+      mailto.click(function() {
+        var href = $(this).attr('href');
+        var email = href.replace('mailto:', '');
+        copyToClipboard(email);
+        $('.mailto-message').empty().append(messageSuccess);
+        setTimeout(function() {
+          $('.mailto-message').empty().append(messageCopy);
+        }, 2000);
+      });
+
+    });
+    //
+    function copyToClipboard(text) {
+      var dummy = document.createElement("input");
+      document.body.appendChild(dummy);
+      dummy.setAttribute('value', text);
+      dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+    }
+  </script>
+
+
+</body>
+
+
+</html>
