@@ -30,25 +30,22 @@
         <h2>Click-to-copy</h2>
         <p class="small">MARCH 23 2020</p>
         <p>Hello! Let me tell you a story:</p>
-        <p>So, you’re hovering over an email link at the bottom of a web page, and you wonder: if I click on this, will it happen again? Will clicking this email launch that default mail app that I’ve never, ever used? Causing the computer fan to whirr into a frenzy and a million mail notifications to swarm your desktop? This problem has a name:
+        <p>So, you’re hovering over an email link at the bottom of a web page, and you wonder: if I click on this, will it happen again? Will clicking this email launch that default mail app that I’ve never, ever used? Causing your computer fan to whirr into a frenzy and a million mail notifications to swarm your desktop? This problem has a name:
           email-bombing. You can find the culprit in one line of code:</p>
         <pre><code contenteditable>
 &lt;a href="mailto:example@email.com">example@email.com</a></code>
       </pre>
-        <p>Now, there are arguments made in defense of “mailto” have some good points. On clicking a “mailto” link, you launch the native email client and auto-populate any part of a draft email. This includes adding the addressee email, CC’s and
-          BCC’s, and even a subject line. Some would say that this offers the best user experience. But that’s with the idea that most users rely on their native email client to manage their inboxes.</p>
-        <p>On desktop, native email clients hardly compete with the most common email client: Gmail. In February 2020, one out of every four emails were opened on Gmail. Compare this with one in ten opened in Apple Mail, with even less in
-          Outlook<sup><u><a href="http://emailclientmarketshare.com" target="_blank">1</a></u></sup>.</p>
+        <p>There are arguments made in defense of “mailto” that make some good points. On clicking a “mailto” link, you launch the native email client and auto-populate any part of a draft email. This includes adding the addressee’s email, CC’s and
+          BCC’s, and even a subject line. Some would say that this offers the best user experience. But that’s assuming most users rely on their native email client to manage their inboxes.</p>
+        <p>On desktop, native email clients hardly compete with the most common email client: Gmail. Of 871 million emails sent in February 2020, one out of every four were opened in Gmail. Compare this with one in ten opened in Apple Mail, and even less opened in Outlook<sup><u><a href="http://emailclientmarketshare.com" target="_blank">1</a></u></sup>.</p>
 
-        <p>At one time, "mailto" might have been a powerful tool. Now there are better ways to build a robust user experience without launching an oft-obsolete email client. The best solution follows the KISS (Keep It Simple, Stupid) principle:
-          click-to-copy.</p>
+        <p>At one time, “mailto” might have been a powerful tool. But there are better ways to build a robust user experience without launching an oft-obsolete email client. The best solution follows the KISS (Keep It Simple, Stupid) principle: click-to-copy.</p>
 
         <p>You can put in place a click-to-copy interaction with a few lines of Javascript and a little CSS to create a solution that is timely and responsive. Check out my documentation below:</p>
 
-
 <pre><code contenteditable>
-// First, add the class ".mailto-link" to all "mailto" links
-// This is needed to separate the disabling of the default action
+// First, add class ".mailto-link" to all "mailto" links
+// This is needed to disable the default launch
 // and to copy the email to the clipboard
 
 $('a[href^=mailto]').addClass('mailto-link');
@@ -62,7 +59,7 @@ $('.mailto-message').append(messageCopy);
 </code></pre>
 <br>
 <pre><code contenteditable>
-// Next, disable the default launch of the native email client
+// Next, actually disable the default launch of the native email client
 
 $('a[href^=mailto]').click(function() {
 		return false;
@@ -70,7 +67,7 @@ $('a[href^=mailto]').click(function() {
 </code></pre>
 <br>
 <pre><code contenteditable>
-// Add an on click action to fetch href and remove "mailto"
+// Add an onClick action to fetch the linked email and remove "mailto:"
 // Finally, store the email address in a new variable
 
 mailto.click(function() {
@@ -105,21 +102,28 @@ function copyToClipboard(text) {
   }
 
   .mailto-message {
+    /* position */
     top: 1px;
     left: 50%;
-    margin-bottom: -5px;
     transform: translate(60%, 20%);
     position: absolute;
-    opacity: 0;
+
+    /* box-model */
+    margin-bottom: -5px;
+    padding: 2px 6px;
     width: auto;
-    white-space: nowrap;
-    font-size: 14px;
+    border-radius: 2px;
+
+    /* visual */
+    opacity: 0;
     background-color: #2c2c2c;
     color: white;
-    font-family: Helvetica, sans-serif;
-    padding: 2px 6px;
-    border-radius: 2px;
     transition: 0.5s;
+
+    /* typography */
+    font-size: 14px;
+    white-space: nowrap;
+    font-family: Helvetica, sans-serif;
   }
 
   .mailto-message:after {
