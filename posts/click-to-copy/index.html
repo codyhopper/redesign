@@ -34,7 +34,7 @@
         <p>This problem has a name:
           email-bombing. You can find the culprit in one line of code:</p>
         <pre><code contenteditable>
-&lt;a href="mailto:example@email.com">example@email.com</a></code>
+&lt;a href="mailto:example@email.com">example@email.com&lt;/a></code>
       </pre>
         <p>There are arguments made in defense of “mailto” that make some good points. On clicking a “mailto” link, you launch the native email client and auto-populate any part of a draft email. This includes adding the addressee’s email, CC’s and
           BCC’s, and even a subject line. Some would say that this offers the best user experience. But that’s assuming most users rely on their native email client to manage their inboxes.</p>
@@ -55,7 +55,7 @@ var mailto = $('.mailto-link');
 var messageCopy = 'Click to copy email address.';
 var messageSuccess = 'Email copied to clipboard!';
 
-mailto.append('<span class="mailto-message"></span>');
+mailto.append('&lt;span class="mailto-message">&lt;/span>');
 $('.mailto-message').append(messageCopy);
 </code></pre>
 <br>
